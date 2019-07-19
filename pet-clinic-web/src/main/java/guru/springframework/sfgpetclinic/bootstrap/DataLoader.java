@@ -88,6 +88,18 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
+        Owner owner3 = Owner.builder()
+                            .address("fdsf").firstName("Danijel").lastName("Petanovic")
+                            .city("Solin").telephone("334242").build();
+        Pet danijelsCat = new Pet();
+        danijelsCat.setPetType(savedCatPetType);
+        danijelsCat.setOwner(owner3);
+        danijelsCat.setBirthDate(LocalDate.now());
+        danijelsCat.setName("Mega Cat");
+        owner3.getPets().add(danijelsCat);
+
+        ownerService.save(owner3);
+
         Visit catVisit = new Visit();
         catVisit.setPet(fionasCat);
         catVisit.setDate(LocalDate.now());
